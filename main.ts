@@ -424,6 +424,7 @@ function IsItTrue () {
         scene.setBackgroundColor(15)
         game.splash("Sorry" + "TryNextTime")
     }
+    return false
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.setAction(_1stCharacter, ActionKind.right)
@@ -468,3 +469,6 @@ _1stCharacter.setStayInScreen(true)
 lIfe()
 IsItTrue()
 Timer()
+while (true) {
+    music.spooky.playUntilDone()
+}
