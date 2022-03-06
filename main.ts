@@ -373,7 +373,7 @@ function IsItTrue () {
             ........................
             ........................
             `, SpriteKind.Enemy)
-        mySprite.follow(_1stCharacter, 25)
+        mySprite.follow(_1stCharacter, 35)
         mySprite.setPosition(80, 10)
     } else if (info.life() == 2) {
         mySprite2 = sprites.create(img`
@@ -394,7 +394,7 @@ function IsItTrue () {
             . . . f f f f f f f c c c c c . 
             . . . . . . . . . . . . c c c c 
             `, SpriteKind.Projectile)
-        mySprite2.follow(_1stCharacter, 25)
+        mySprite2.follow(_1stCharacter, 30)
         mySprite2.setPosition(80, 10)
         _1stCharacter.setPosition(80, 80)
     } else if (info.life() == 1) {
@@ -419,6 +419,10 @@ function IsItTrue () {
         mySprite3.follow(_1stCharacter, 25)
         mySprite3.setPosition(80, 10)
         _1stCharacter.setPosition(80, 80)
+    } else if (info.life() == 0) {
+        _1stCharacter.destroy()
+        scene.setBackgroundColor(15)
+        game.splash("Sorry" + "TryNextTime")
     }
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -433,6 +437,9 @@ controller.up.onEvent(ControllerButtonEvent.Released, function () {
     pause(200)
     animation.stopAnimation(animation.AnimationTypes.All, _1stCharacter)
 })
+function Timer () {
+    info.startCountdown(45)
+}
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.setAction(_1stCharacter, ActionKind.down)
 })
@@ -460,3 +467,4 @@ animation2()
 _1stCharacter.setStayInScreen(true)
 lIfe()
 IsItTrue()
+Timer()
